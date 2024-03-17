@@ -6,10 +6,10 @@
                 <div class="card-header">
                 <div class="row">
                     <div class="col-md-8 card_title_part">
-                        <i class="fab fa-gg-circle"></i>All Team Member Information
+                        <i class="fab fa-gg-circle"></i> All Partner Information
                     </div>  
                     <div class="col-md-4 card_button_part">
-                        <a href="{{ route('team.add') }}" class="btn btn-sm btn-dark"><i class="fas fa-plus-circle"></i>Add Team Member</a>
+                        <a href="{{ route('partner.add') }}" class="btn btn-sm btn-dark"><i class="fas fa-plus-circle"></i>Add Partners</a>
                     </div>  
                 </div>
                 </div>
@@ -33,33 +33,31 @@
                 <table class="table table-bordered table-striped table-hover custom_table">
                     <thead class="table-dark">
                     <tr>
-                        <th>Member Name</th>
-                        <th>Designation</th>
-                        <th>Order</th>
-                        <th>Photo</th>
+                        <th>Partner Title</th>
+                        <th>Partner Url</th>
+                        <th>Logo</th>
                         <th>Manage</th>
                     </tr>
                     </thead>
                     <tbody>
-                        @foreach($team as $data)
+                        @foreach($partner as $partner)
                     <tr>
-                        <td>{{ $data->member_name }}</td>
-                        <td>{{ $data->member_designation }}</td>
-                        <td>{{ $data->member_order }}</td>
+                        <td>{{ $partner->partner_title }}</td>
+                        <td>{{ $partner->partner_url }}</td>
                         <td>
-                            @if( $data->banner_images!='')
-                            <img class="img-thumbnail img40" src="{{asset('uploads/banners/'.$banner->banner_images)}}"/>
+                            @if( $partner->partner_images!='')
+                            <img class="img-thumbnail img40" src="{{asset('uploads/partners/'.$partners->partner_logo)}}"/>
                             @else
-                            <img class="" src="{{ asset('contents') }}/images/avatar.png/">
+                            <img class="" src="{{ asset('contents') }}/images/avatar.jpg/">
                             @endif    
                         </td>
                         <td>
                             <div class="btn-group btn_group_manage" role="group">
                             <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ url('/dashboard/team/view/'.$data->member_slug) }}">View</a></li>
-                                    <li><a class="dropdown-item" href="{{ url('/dashboard/team/edit/'.$data->member_slug) }}">Edit</a></li>
-                                    <li><a class="dropdown-item" href="#" title="delete" id="softDelete"  data-bs-toggle="modal" data-bs-target="#softDeleteModal" data-id="{{ $data->team_member_id }}">Delete</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('/dashboard/partner/view/'.$partner->partner_slug) }}">View</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('/dashboard/partner/edit/'.$partner->partner_slug) }}">Edit</a></li>
+                                    <li><a class="dropdown-item" href="#" title="delete" id="softDelete"  data-bs-toggle="modal" data-bs-target="#softDeleteModal" data-id="{{ $partner->partner_id }}">Delete</a></li>
                                 </ul>
                             </div>
                         </td>
@@ -83,7 +81,7 @@
 
 <div class="modal fade" id="softDeleteModal" tabindex="-1" aria-labelledby="softDeleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form action="{{ route('team.softdelete') }}" method="post">
+    <form action="{{ route('partner.softdelete') }}" method="post">
         @csrf
         <div class="modal-content">
             <div class="modal-header">

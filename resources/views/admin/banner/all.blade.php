@@ -41,19 +41,15 @@
                         <th>Manage</th>
                     </tr>
                     </thead>
-                    @foreach($banner as $banner)
                     <tbody>
+                        @foreach($banner as $banner)
                     <tr>
                         <td>{{ $banner->banner_title }}</td>
                         <td>{{ $banner->banner_subtitle }}</td>
                         <td>{{ $banner->banner_button }}</td>
                         <td>{{ $banner->banner_status }}</td>
                         <td>
-                            @if( $banner->banner_images!='')
-                            <img class="img-thumbnail img40" src="{{asset('uploads/banners/'.$banner->banner_images)}}"/>
-                            @else
-                            <img class="" src="{{ asset('contents') }}/images/avatar.png/">
-                            @endif    
+                             
                         </td>
                         <td>
                             <div class="btn-group btn_group_manage" role="group">
@@ -66,7 +62,7 @@
                             </div>
                         </td>
                     </tr>
-                    @endforeach()
+                    @endforeach
                     </tbody>
                 </table>
                 </div>

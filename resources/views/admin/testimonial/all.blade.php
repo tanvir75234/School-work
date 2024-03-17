@@ -6,10 +6,10 @@
                 <div class="card-header">
                 <div class="row">
                     <div class="col-md-8 card_title_part">
-                        <i class="fab fa-gg-circle"></i>All Team Member Information
+                        <i class="fab fa-gg-circle"></i>All Testimonial Information
                     </div>  
                     <div class="col-md-4 card_button_part">
-                        <a href="{{ route('team.add') }}" class="btn btn-sm btn-dark"><i class="fas fa-plus-circle"></i>Add Team Member</a>
+                        <a href="{{ route('testimonial.add') }}" class="btn btn-sm btn-dark"><i class="fas fa-plus-circle"></i>Add Testimonial</a>
                     </div>  
                 </div>
                 </div>
@@ -33,19 +33,22 @@
                 <table class="table table-bordered table-striped table-hover custom_table">
                     <thead class="table-dark">
                     <tr>
-                        <th>Member Name</th>
-                        <th>Designation</th>
+                        <th>Client Name</th>
+                        <th>Identity</th>
+                        <th>Rating</th>
+                        <th>Feedback</th>
                         <th>Order</th>
                         <th>Photo</th>
-                        <th>Manage</th>
                     </tr>
                     </thead>
+                    @foreach($testimonial as $data) 
                     <tbody>
-                        @foreach($team as $data)
                     <tr>
-                        <td>{{ $data->member_name }}</td>
-                        <td>{{ $data->member_designation }}</td>
-                        <td>{{ $data->member_order }}</td>
+                        <td>{{ $data->testi_name }}</td>
+                        <td>{{ $data->testi_designation }}-{{ $data->testi_company }} </td>
+                        <td>{{ $data->testi_star }} </td>
+                        <td>{{ $data->testi_feedback }} </td>
+                        <td>{{ $data->testi_order }}</td>
                         <td>
                             @if( $data->banner_images!='')
                             <img class="img-thumbnail img40" src="{{asset('uploads/banners/'.$banner->banner_images)}}"/>
@@ -57,15 +60,15 @@
                             <div class="btn-group btn_group_manage" role="group">
                             <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ url('/dashboard/team/view/'.$data->member_slug) }}">View</a></li>
-                                    <li><a class="dropdown-item" href="{{ url('/dashboard/team/edit/'.$data->member_slug) }}">Edit</a></li>
-                                    <li><a class="dropdown-item" href="#" title="delete" id="softDelete"  data-bs-toggle="modal" data-bs-target="#softDeleteModal" data-id="{{ $data->team_member_id }}">Delete</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('/dashboard/testiomial/view/'.$data->testi_slug) }}">View</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('/dashboard/testiomial/edit/'.$data->testi_slug) }}">Edit</a></li>
+                                    <li><a class="dropdown-item" href="#" title="delete" id="softDelete"  data-bs-toggle="modal" data-bs-target="#softDeleteModal" data-id="{{ $data->testi_id }}">Delete</a></li>
                                 </ul>
                             </div>
                         </td>
                     </tr>
-                    @endforeach()
-                    </tbody>
+                </tbody>
+                @endforeach
                 </table>
                 </div>
                 <div class="card-footer">
@@ -83,7 +86,7 @@
 
 <div class="modal fade" id="softDeleteModal" tabindex="-1" aria-labelledby="softDeleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form action="{{ route('team.softdelete') }}" method="post">
+    <form action="{{ route('testimonial.softdelete') }}" method="post">
         @csrf
         <div class="modal-content">
             <div class="modal-header">

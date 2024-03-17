@@ -11,7 +11,7 @@ use Auth;
 class Team_MemberController extends Controller{
 
     public function index(){
-        $team = Team_member::where('member_status',1)->where('team_member_id',1)->get();
+        $team = Team_member::where('member_status',1)->orderBy('team_member_id','DESC')->get();
         return view('admin.team_member.all',compact('team'));
     }
 
@@ -31,7 +31,6 @@ class Team_MemberController extends Controller{
 
     public function insert(Request $request){
         $slug = 'TM'.uniqid(20);
-        $creator = Auth::user()->id;
 
         $insert = Team_member::insert([
             'member_name' => $request['member_name'],
@@ -58,7 +57,6 @@ class Team_MemberController extends Controller{
     public function update(Request $request){
         $id = $request['team_member_id'];
         $slug = 'TM'.uniqid(20);
-        $creator = Auth::user()->id;
 
         $update = Team_member::where('member_status',1)->where('team_member_id',$id)->update([
             'member_name' => $request['member_name'],

@@ -12,7 +12,7 @@ use Auth;
 class BannerController extends Controller
 {
     public function index(){
-        $banner = Banner::where('banner_status',1)->where('banner_id',1)->get();
+        $banner = Banner::where('banner_status',1)->orderBy('banner_id','DESC')->get();
         return view('admin.banner.all',compact('banner'));
     }
 
@@ -33,7 +33,7 @@ class BannerController extends Controller
     public function insert(Request $request){
 
         $slug = 'B'.uniqid(20);
-        $creator = Auth::user()->id;
+
 
         $insert = Banner::insert([
             'banner_title' => $request['banner_title'],
@@ -41,7 +41,7 @@ class BannerController extends Controller
             'banner_button' => $request['banner_button'],
             'banner_images' => $request['banner_images'],
             'banner_slug' => $slug,    
-            'banner_creator' => $creator,
+
             'created_at' =>Carbon::now('asia/dhaka')->toDateTimeString(),  
             'updated_at' =>Carbon::now('asia/dhaka')->toDateTimeString(),    
         ]);
@@ -59,7 +59,7 @@ class BannerController extends Controller
 
         $id = $request['banner_id'];
         $slug = 'B'.uniqid(20);
-        $creator = Auth::user()->id;
+
 
         $update = Banner::where('banner_status',1)->where('banner_id',$id)->update([
             'banner_title' => $request['banner_title'],
@@ -67,7 +67,7 @@ class BannerController extends Controller
             'banner_button' => $request['banner_button'],
             'banner_images' => $request['banner_images'],
             'banner_slug' => $slug,
-            'banner_creator' => $creator,
+
             'updated_at' => Carbon::now('asia/dhaka')->toDateTimeString(),
         ]);
         

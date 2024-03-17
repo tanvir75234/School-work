@@ -46,6 +46,10 @@
                             <li><a href="all-user.html"><i class="fas fa-user-circle"></i> Users</a></li>
                             <li><a href="{{ route('banner') }}"><i class="fas fa-images"></i> Banner</a></li>
                             <li><a href="{{ route('team') }}"><i class="fas fa-images"></i> Team</a></li>
+                            <li><a href="{{ route('service') }}"><i class="fas fa-images"></i> Service</a></li>
+                            <li><a href="{{ route('partner') }}"><i class="fas fa-images"></i> Partner</a></li>
+                            <li><a href="{{ route('client') }}"><i class="fas fa-images"></i> Client</a></li>
+                            <li><a href="{{ route('testimonial') }}"><i class="fas fa-images"></i> Testimonial</a></li>
                             <li><a href="#"><i class="fas fa-comments"></i> Contact Message</a></li>
                             <li><a href="#"><i class="fas fa-globe"></i> Live Site</a></li>
                             <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
