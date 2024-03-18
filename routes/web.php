@@ -9,6 +9,8 @@ use App\Http\Controllers\Team_MemberController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\ContactMessageController;
+use App\Http\Controllers\ProjectController;
 
 
 Route::get('/', function () {
@@ -76,5 +78,25 @@ Route::post('/dashboard/testimonial/update',[TestimonialController::class,'updat
 Route::post('/dashboard/testimonial/softdelete',[TestimonialController::class,'softdelete'])->name('testimonial.softdelete');
 Route::post('/dashboard/testimonial/restore',[TestimonialController::class,'restore'])->name('testimonial.restore');
 Route::post('/dashboard/testimonial/delete',[TestimonialController::class,'delete'])->name('testimonial.restore');
+
+Route::get('/dashboard/contact/message',[ContactMessageController::class,'index'])->name('contact.message');
+Route::get('/dashboard/contact/message/add',[ContactMessageController::class,'add'])->name('contact.message.add');
+Route::get('/dashboard/contact/message/view/{slug}',[ContactMessageController::class,'view'])->name('contact.message.view');
+Route::get('/dashboard/contact/message/edit/{slug}',[ContactMessageController::class,'edit'])->name('contact.message.edit');
+Route::post('/dashboard/contact/message/submit',[ContactMessageController::class,'insert'])->name('contact.message.submit');
+Route::post('/dashboard/contact/message/update',[ContactMessageController::class,'update'])->name('contact.message.update');
+Route::post('/dashboard/contact/message/softdelete',[ContactMessageController::class,'softdelete'])->name('contact.message.softdelete');
+Route::post('/dashboard/contact/message/restore',[ContactMessageController::class,'restore'])->name('contact.message.restore');
+Route::post('/dashboard/contact/message/delete',[ContactMessageController::class,'delete'])->name('contact.message.restore');
+
+Route::get('/dashboard/project',[ProjectController::class,'index'])->name('project');
+Route::get('/dashboard/project/add',[ProjectController::class,'add'])->name('project.add');
+Route::get('/dashboard/project/view/{slug}',[ProjectController::class,'view'])->name('project.view');
+Route::get('/dashboard/project/edit/{slug}',[ProjectController::class,'edit'])->name('project.edit');
+Route::post('/dashboard/project/submit',[ProjectController::class,'insert'])->name('project.submit');
+Route::post('/dashboard/project/update',[ProjectController::class,'update'])->name('project.update');
+Route::post('/dashboard/project/softdelete',[ProjectController::class,'softdelete'])->name('project.softdelete');
+Route::post('/dashboard/project/restore',[ProjectController::class,'restore'])->name('project.restore');
+Route::post('/dashboard/project/delete',[ProjectController::class,'delete'])->name('project.restore');
 
 require __DIR__.'/auth.php';
