@@ -44,6 +44,14 @@
                         <ul>
                             <li><a href="index.html"><i class="fas fa-home"></i> Dashboard</a></li>
                             <li><a href="all-user.html"><i class="fas fa-user-circle"></i> Users</a></li>
+                            <li><a href="{{ route('project')}}"><i class="fas fa-user-circle"></i> Project</a>
+                                <ul>
+                                    <li class="mx-3"><a href="{{ route('project')}}">All Projet</a></li>
+                                    <li class="mx-3"><a href="{{ route('project.add') }}">Add Projet</a></li>
+                                    <li class="mx-3"><a href="{{ url('dashboard/project/category') }}">Projet Category</a></li>
+                                    
+                                </ul>
+                            </li>
                             <li><a href="{{ route('banner') }}"><i class="fas fa-images"></i> Banner</a></li>
                             <li><a href="{{ route('team') }}"><i class="fas fa-images"></i> Team</a></li>
                             <li><a href="{{ route('service') }}"><i class="fas fa-images"></i> Service</a></li>

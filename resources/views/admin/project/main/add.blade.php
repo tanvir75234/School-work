@@ -53,7 +53,16 @@
                                       <div class="row mb-3">
                                         <label class="col-sm-3 col-form-label col_form_label">Category:</label>
                                         <div class="col-sm-7">
-                                          <input type="text" class="form-control form_control" id="" name="procate_id">
+                                            @php
+                                              $allCate=App\Models\ProjectCategory::where('procate_status',1)->orderBy('procate_name','ASC')->get();
+                                            @endphp
+                                            <select class="form-control" name="category">
+                                              <option value="">choose category</option>
+                                              @foreach($allCate as $cate)
+                                              <option value="{{$cate->procate_id}}">{{$cate->procate_name}}</option>
+                                              @endforeach
+                                            </select>
+                                          </div>                                          
                                         </div>
                                       </div>
                                       <div class="row mb-3">

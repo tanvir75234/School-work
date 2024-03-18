@@ -34,7 +34,7 @@ class ProjectController extends Controller{
 
         $insert = Project::insert([
             'project_title' => $request['project_title'],
-            'procate_id' => $request['procate_id'],
+            
             'project_url' => $request['project_url'],
             'project_order' => $request['project_order'],
             'project_remarks' => $request['project_remarks'],

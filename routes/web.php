@@ -11,6 +11,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProjectCategoryController;
 
 
 Route::get('/', function () {
@@ -98,5 +99,15 @@ Route::post('/dashboard/project/update',[ProjectController::class,'update'])->na
 Route::post('/dashboard/project/softdelete',[ProjectController::class,'softdelete'])->name('project.softdelete');
 Route::post('/dashboard/project/restore',[ProjectController::class,'restore'])->name('project.restore');
 Route::post('/dashboard/project/delete',[ProjectController::class,'delete'])->name('project.restore');
+
+Route::get('dashboard/project/category', [ProjectCategoryController::class, 'index']);
+Route::get('dashboard/project/category/add', [ProjectCategoryController::class, 'add']);
+Route::get('dashboard/project/category/edit/{slug}', [ProjectCategoryController::class, 'edit']);
+Route::get('dashboard/project/category/view/{slug}', [ProjectCategoryController::class, 'view']);
+Route::post('dashboard/project/category/submit', [ProjectCategoryController::class, 'insert']);
+Route::post('dashboard/project/category/update', [ProjectCategoryController::class, 'update']);
+Route::post('dashboard/project/category/softdelete', [ProjectCategoryController::class, 'softdelete']);
+Route::post('dashboard/project/category/restore', [ProjectCategoryController::class, 'restore']);
+Route::post('dashboard/project/category/delete', [ProjectCategoryController::class, 'delete']);
 
 require __DIR__.'/auth.php';
