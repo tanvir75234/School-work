@@ -12,6 +12,9 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectCategoryController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\UniversityController;
+
 
 
 Route::get('/', function () {
@@ -109,5 +112,25 @@ Route::post('dashboard/project/category/update', [ProjectCategoryController::cla
 Route::post('dashboard/project/category/softdelete', [ProjectCategoryController::class, 'softdelete']);
 Route::post('dashboard/project/category/restore', [ProjectCategoryController::class, 'restore']);
 Route::post('dashboard/project/category/delete', [ProjectCategoryController::class, 'delete']);
+
+Route::get('/dashboard/country',[CountryController::class,'index'])->name('country');
+Route::get('/dashboard/country/add',[CountryController::class,'add'])->name('country.add');
+Route::get('/dashboard/country/view/{slug}',[CountryController::class,'view'])->name('country.view');
+Route::get('/dashboard/country/edit/{slug}',[CountryController::class,'edit'])->name('country.edit');
+Route::post('/dashboard/country/submit',[CountryController::class,'insert'])->name('country.submit');
+Route::post('/dashboard/country/update',[CountryController::class,'update'])->name('country.update');
+Route::post('/dashboard/country/softdelete',[CountryController::class,'softdelete'])->name('country.softdelete');
+Route::post('/dashboard/country/restore',[CountryController::class,'restore'])->name('country.restore');
+Route::post('/dashboard/country/delete',[CountryController::class,'delete'])->name('country.restore');
+
+Route::get('/dashboard/university',[UniversityController::class,'index'])->name('university');
+Route::get('/dashboard/university/add',[UniversityController::class,'add'])->name('university.add');
+Route::get('/dashboard/university/view/{slug}',[UniversityController::class,'view'])->name('university.view');
+Route::get('/dashboard/university/edit/{slug}',[UniversityController::class,'edit'])->name('university.edit');
+Route::post('/dashboard/university/submit',[UniversityController::class,'insert'])->name('university.submit');
+Route::post('/dashboard/university/update',[UniversityController::class,'update'])->name('university.update');
+Route::post('/dashboard/university/softdelete',[UniversityController::class,'softdelete'])->name('university.softdelete');
+Route::post('/dashboard/university/restore',[UniversityController::class,'restore'])->name('university.restore');
+Route::post('/dashboard/university/delete',[UniversityController::class,'delete'])->name('university.restore');
 
 require __DIR__.'/auth.php';

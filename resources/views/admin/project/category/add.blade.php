@@ -32,15 +32,10 @@
                   </div>
                   <div class="col-md-2"></div>
               </div>
-              <div class="form-group row mb-3 {{ $errors->has('name') ? ' has-error' : '' }}">
+              <div class="form-group row mb-3">
                   <label class="col-sm-3 col-form-label col_form_label">Project Category Name<span class="req_star">*</span>:</label>
                   <div class="col-sm-7">
                     <input type="text" class="form-control form_control" name="name" value="{{old('name')}}">
-                    @if ($errors->has('name'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('name') }}</strong>
-                        </span>
-                    @endif
                   </div>
               </div>
               <div class="form-group row mb-3">
