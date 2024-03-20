@@ -32,17 +32,27 @@
                             </div>
                             <div class="col-md-2"></div>
                         </div>
-                          <div class="row mb-3">
+                          <div class="row mb-3 {{ $errors->has('member_name') ? 'is-invalid' : ''}}">
                             <label class="col-sm-3 col-form-label col_form_label">Member Name<span class="req_star">*</span>:</label>
                             <div class="col-sm-7">
                               <input type="text" name="team_member_id" value="{{ $team->team_member_id }}">
                               <input type="text" class="form-control form_control" id="" name="member_name" value="{{ $team->member_name }}">
+                              @if($errors->has('member_name'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('member_name') }}</strong>
+                                </span>
+                              @endif
                             </div>
                           </div>
-                          <div class="row mb-3">
+                          <div class="row mb-3 {{ $errors->has('member_designation') ? 'is-invalid' : ''}}">
                             <label class="col-sm-3 col-form-label col_form_label">Member Designation:</label>
                             <div class="col-sm-7">
                               <input type="text" class="form-control form_control" id="" name="member_designation" value="{{ $team->member_designation }}">
+                              @if($errors->has('member_designation'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('member_designation') }}</strong>
+                                </span>
+                              @endif
                             </div>
                           </div>
                           <div class="form-group row mb-3">

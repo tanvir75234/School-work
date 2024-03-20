@@ -30,6 +30,14 @@ class Team_MemberController extends Controller{
     }
 
     public function insert(Request $request){
+        $request->validate([
+            'member_name' => 'required',
+            'member_designation' => 'required'
+        ],[
+            'member_name.required' => "Please enter your member name .",
+            'member_designation.required' => "Please enter your member designation .",
+        ]);
+
         $slug = 'TM'.uniqid(20);
 
         $insert = Team_member::insert([
@@ -55,6 +63,14 @@ class Team_MemberController extends Controller{
     }
 
     public function update(Request $request){
+        $request->validate([
+            'member_name' => 'required',
+            'member_designation' => 'required'
+        ],[
+            'member_name.required' => "Please enter your member name .",
+            'member_designation.required' => "Please enter your member designation .",
+        ]);
+        
         $id = $request['team_member_id'];
         $slug = 'TM'.uniqid(20);
 

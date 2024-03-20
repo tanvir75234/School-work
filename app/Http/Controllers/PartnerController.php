@@ -29,6 +29,13 @@ class PartnerController extends Controller{
     }
 
     public function insert(Request $request){
+        $request->validate([
+            'partner_title' => 'required',
+            'partner_url' => 'required',
+        ],[
+            'partner_title.required' => "Please enter your partner title",
+            'partner_url.required' => "Please enter your partner url",
+        ]);
 
         $slug = 'P'.uniqid(20);
 
@@ -51,7 +58,14 @@ class PartnerController extends Controller{
     }   
 
     public function update(Request $request){
-
+        $request->validate([
+            'partner_title' => 'required',
+            'partner_url' => 'required',
+        ],[
+            'partner_title.required' => "Please enter your partner title",
+            'partner_url.required' => "Please enter your partner url",
+        ]);
+        
         $id = $request['partner_id'];
         $slug = 'P'.uniqid(20);
 

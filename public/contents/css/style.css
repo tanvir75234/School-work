@@ -285,3 +285,7 @@ span.req_star{
     max-width: 300px;
     max-height: 200px;
 }
+
+.invalid-feedback {
+    display: block;
+}

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades;
 use App\Models\Banner;
 use Carbon\Carbon;
 use Session;
@@ -31,6 +33,21 @@ class BannerController extends Controller
     }
 
     public function insert(Request $request){
+        $request->validate([
+            'banner_title' => 'required',
+            'banner_subtitle' => 'required',
+        ],[
+            'banner_title.required' => 'Please enter your banner title',
+            'banner_subtitle.required' => 'Please enter your banner subtitle',
+        ]);
+
+        if($request->has('banner_images')){
+
+            $file = $request->file('banner_images');
+            $extension = $file->getClientOriginalExtenstion();
+            $filename =time().'.'.$extension;
+            $file->move('uploads/banners/',$filename);
+        }
 
         $slug = 'B'.uniqid(20);
 
@@ -41,7 +58,6 @@ class BannerController extends Controller
             'banner_button' => $request['banner_button'],
             'banner_images' => $request['banner_images'],
             'banner_slug' => $slug,    
-
             'created_at' =>Carbon::now('asia/dhaka')->toDateTimeString(),  
             'updated_at' =>Carbon::now('asia/dhaka')->toDateTimeString(),    
         ]);
@@ -56,7 +72,14 @@ class BannerController extends Controller
     }   
 
     public function update(Request $request){
-
+        $request->validate([
+            'banner_title' => 'required',
+            'banner_subtitle' => 'required',
+        ],[
+            'banner_title.required' => 'Please enter your banner title',
+            'banner_subtitle.required' => 'Please enter your banner subtitle',
+        ]);
+        
         $id = $request['banner_id'];
         $slug = 'B'.uniqid(20);
 

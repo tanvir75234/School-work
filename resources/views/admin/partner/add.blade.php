@@ -32,16 +32,26 @@
                                         </div>
                                         <div class="col-md-2"></div>
                                     </div>
-                                      <div class="row mb-3">
+                                      <div class="row mb-3 {{ $errors->has('partner_title') ? 'is-invalid' : '' }}">
                                         <label class="col-sm-3 col-form-label col_form_label">Title<span class="req_star">*</span>:</label>
                                         <div class="col-sm-7">
                                           <input type="text" class="form-control form_control" id="" name="partner_title">
+                                          @if($errors->has('partner_title'))
+                                            <span class="invalid-feedback">
+                                              <strong>{{ $errors->first('partner_title') }}</strong>
+                                            </span>
+                                          @endif
                                         </div>
                                       </div>
-                                      <div class="row mb-3">
+                                      <div class="row mb-3 {{ $errors->has('partner_url') ? 'is-invalid' : '' }}">
                                         <label class="col-sm-3 col-form-label col_form_label">Partner Url:</label>
                                         <div class="col-sm-7">
                                           <input type="text" class="form-control form_control" id="" name="partner_url">
+                                          @if($errors->has('partner_url'))
+                                            <span class="invalid-feedback">
+                                              <strong>{{ $errors->first('partner_url') }}</strong>
+                                            </span>
+                                          @endif
                                         </div>
                                       </div>
                                       <div class="row mb-3">

@@ -29,7 +29,18 @@ class ContactMessageController extends Controller{
     }
 
     public function insert(Request $request){
-
+        $request->validate([
+            'cm_name' => 'required',
+            'cm_phone' => 'required',
+            'cm_email' => 'required',
+            'cm_subject' => 'required',
+        ],[
+            'cm_name.required' => "Please enter your name .",
+            'cm_phone.required' => "Please enter your phone .",
+            'cm_email.required' => "Please enter your email .",
+            'cm_subject.required' => "Please enter your subject .",
+        ]);
+      
         $slug = 'CM'.uniqid(20);
 
         $insert = ContactMessage::insert([
@@ -53,7 +64,18 @@ class ContactMessageController extends Controller{
     }   
 
     public function update(Request $request){
-
+        $request->validate([
+            'cm_name' => 'required',
+            'cm_phone' => 'required',
+            'cm_email' => 'required',
+            'cm_subject' => 'required',
+        ],[
+            'cm_name.required' => "Please enter your name .",
+            'cm_phone.required' => "Please enter your phone .",
+            'cm_email.required' => "Please enter your email .",
+            'cm_subject.required' => "Please enter your subject .",
+        ]);
+        
         $id = $request['cm_id'];
         $slug = 'CM'.uniqid(20);
 

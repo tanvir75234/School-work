@@ -29,6 +29,13 @@ class CountryController extends Controller{
     }
 
     public function insert(Request $request){
+        $request->validate([
+            'country_name' => 'required',
+            'country_title' => 'required',
+        ],[
+            'country_name.required' => "Please enter your country name",
+            'country_title.required' => "Please enter your country title",
+        ]);
 
         $slug = 'C'.uniqid(20);
 
@@ -56,6 +63,13 @@ class CountryController extends Controller{
     }   
 
     public function update(Request $request){
+        $request->validate([
+            'country_name' => 'required',
+            'country_title' => 'required',
+        ],[
+            'country_name.required' => "Please enter your country name",
+            'country_title.required' => "Please enter your country title",
+        ]);
 
         $id = $request['country_id'];
         $slug = 'S'.uniqid(20);

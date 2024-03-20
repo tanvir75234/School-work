@@ -32,29 +32,49 @@
                                         </div>
                                         <div class="col-md-2"></div>
                                     </div>
-                                      <div class="row mb-3">
+                                      <div class="row mb-3 {{ $errors->has('cm_name') ? 'is-invalid' : '' }}">
                                         <label class="col-sm-3 col-form-label col_form_label">Name<span class="req_star">*</span>:</label>
                                         <div class="col-sm-7">
                                           <input type="text" name="cm_id" value="{{ $contact->cm_id }}">
                                           <input type="text" class="form-control form_control" id="" name="cm_name" value="{{ $contact->cm_name }}">
+                                          @if($errors->has('cm_name'))
+                                            <span class='invalid-feedback'>
+                                                <strong>{{ $errors->first('cm_name') }}</strong>
+                                            </span>
+                                          @endif
                                         </div>
                                       </div>
-                                      <div class="row mb-3">
+                                      <div class="row mb-3 {{ $errors->has('cm_phone') ? 'is-invalid' : '' }}">
                                         <label class="col-sm-3 col-form-label col_form_label">Phone:</label>
                                         <div class="col-sm-7">
                                           <input type="text" class="form-control form_control" id="" name="cm_phone" value="{{ $contact->cm_phone }}" >
+                                          @if($errors->has('cm_phone'))
+                                            <span class='invalid-feedback'>
+                                                <strong>{{ $errors->first('cm_phone') }}</strong>
+                                            </span>
+                                          @endif
                                         </div>
                                       </div>
-                                      <div class="row mb-3">
+                                      <div class="row mb-3 {{ $errors->has('cm_email') ? 'is-invalid' : '' }}">
                                         <label class="col-sm-3 col-form-label col_form_label">Email<span class="req_star">*</span>:</label>
+                                        @if($errors->has('cm_email'))
+                                            <span class='invalid-feedback'>
+                                                <strong>{{ $errors->first('cm_email') }}</strong>
+                                            </span>
+                                          @endif
                                         <div class="col-sm-7">
                                           <input type="email" class="form-control form_control" id="" name="cm_email" value="{{ $contact->cm_email }}">
                                         </div>
                                       </div>
-                                      <div class="row mb-3">
+                                      <div class="row mb-3 {{ $errors->has('cm_subject') ? 'is-invalid' : '' }}">
                                         <label class="col-sm-3 col-form-label col_form_label">Subject<span class="req_star">*</span>:</label>
                                         <div class="col-sm-7">
                                           <input type="text" class="form-control form_control" id="" name="cm_subject" value="{{ $contact->cm_subject }}">
+                                          @if($errors->has('cm_subject'))
+                                            <span class='invalid-feedback'>
+                                                <strong>{{ $errors->first('cm_subject') }}</strong>
+                                            </span>
+                                          @endif
                                         </div>
                                       </div>
                                       <div class="row mb-3">

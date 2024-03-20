@@ -57,6 +57,11 @@
                             <li><a href="{{ route('service') }}"><i class="fas fa-images"></i> Service</a></li>
                             <li><a href="{{ route('partner') }}"><i class="fas fa-images"></i> Partner</a></li>
                             <li><a href="{{ route('client') }}"><i class="fas fa-images"></i> Client</a></li>
+                            <li><a href="{{ route('country') }}"><i class="fas fa-images"></i> Study Aboard</a>
+                                <ul>
+                                    <li><a href="{{ route('country') }}">Country</a></li>
+                                </ul>
+                            </li>
                             <li><a href="{{ route('testimonial') }}"><i class="fas fa-images"></i> Testimonial</a></li>
                             <li><a href="{{ route('contact.message') }}"><i class="fas fa-comments"></i> Contact Message</a></li>
                             <li><a href="#"><i class="fas fa-globe"></i> Live Site</a></li>

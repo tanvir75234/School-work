@@ -11,7 +11,7 @@
                                 <i class="fab fa-gg-circle"></i>All Team Member Information
                             </div>  
                             <div class="col-md-4 card_button_part">
-                                <a href="all-user.html" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All Team Member</a>
+                                <a href="{{route('team')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All Team Member</a>
                             </div>  
                         </div>
                       </div>
@@ -32,16 +32,26 @@
                             </div>
                             <div class="col-md-2"></div>
                         </div>
-                          <div class="row mb-3">
+                          <div class="row mb-3 {{ $errors->has('member_name') ? 'is-invalid' : ''}}">
                             <label class="col-sm-3 col-form-label col_form_label">Member Name<span class="req_star">*</span>:</label>
                             <div class="col-sm-7">
-                              <input type="text" class="form-control form_control" id="" name="member_name">
+                              <input type="text" class="form-control form_control" id="" name="member_name" value="{{ old('member_name') }}">
+                              @if($errors->has('member_name'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('member_name') }}</strong>
+                                </span>
+                              @endif
                             </div>
                           </div>
-                          <div class="row mb-3">
-                            <label class="col-sm-3 col-form-label col_form_label">Member Designation:</label>
+                          <div class="row mb-3 {{ $errors->has('member_designation') ? 'is-invalid' : ''}}">
+                            <label class="col-sm-3 col-form-label col_form_label">Member Designation<span class="req_star">*</span>:</label>
                             <div class="col-sm-7">
-                              <input type="text" class="form-control form_control" id="" name="member_designation">
+                              <input type="text" class="form-control form_control" id="" name="member_designation" value="{{ old('member_designation') }}">
+                              @if($errors->has('member_designation'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('member_designation') }}</strong>
+                                </span>
+                              @endif
                             </div>
                           </div>
                           <div class="form-group row mb-3">
@@ -76,15 +86,15 @@
                             </div>
                         </div>
                           <div class="row mb-3">
-                            <label class="col-sm-3 col-form-label col_form_label">Order<span class="req_star">*</span>:</label>
+                            <label class="col-sm-3 col-form-label col_form_label">Order:</label>
                             <div class="col-sm-7">
-                              <input type="text" class="form-control form_control" id="" name="member_order">
+                              <input type="text" class="form-control form_control" id="" name="member_order" value="{{ old('member_order') }}">
                             </div>
                           </div>
                           <div class="row mb-3">
-                            <label class="col-sm-3 col-form-label col_form_label">Photo<span class="req_star">*</span>:</label>
+                            <label class="col-sm-3 col-form-label col_form_label">Photo:</label>
                             <div class="col-sm-7">
-                              <input type="text" class="form-control form_control" id="" name="member_photo">
+                              <input type="text" class="form-control form_control" id="" name="member_photo" value="{{ old('member_photo') }}">
                             </div>
                           </div>
                         </div>   

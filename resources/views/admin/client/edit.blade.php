@@ -32,17 +32,27 @@
                                         </div>
                                         <div class="col-md-2"></div>
                                     </div>
-                                      <div class="row mb-3">
+                                      <div class="row mb-3 {{ $errors->has('client_name') ? 'is-invalid' : '' }}">
                                         <label class="col-sm-3 col-form-label col_form_label">Client Name<span class="req_star">*</span>:</label>
                                         <div class="col-sm-7">
-                                          <input type="text" name="client_id" value="{{ $client->client_id }}">
+                                          <input type="hidden" name="client_id" value="{{ $client->client_id }}">
                                           <input type="text" class="form-control form_control" id="" name="client_name" value="{{ $client->client_name }}">
+                                          @if($errors->has('client_name'))
+                                            <span class="invalid-feedback">
+                                                <strong>{{ $errors->first('client_name') }}</strong>
+                                            </span>
+                                          @endif
                                         </div>
                                       </div>
-                                      <div class="row mb-3">
+                                      <div class="row mb-3 {{ $errors->has('client_url') ? 'is-invalid' : '' }}">
                                         <label class="col-sm-3 col-form-label col_form_label">Client Url:</label>
                                         <div class="col-sm-7">
                                           <input type="text" class="form-control form_control" id="" name="client_url" value="{{ $client->client_url }}">
+                                          @if($errors->has('client_url'))
+                                            <span class="invalid-feedback">
+                                                <strong>{{ $errors->first('client_url') }}</strong>
+                                            </span>
+                                          @endif
                                         </div>
                                       </div>
                                       <div class="row mb-3">
@@ -58,7 +68,7 @@
                                         </div>
                                           </div>   
                                   <div class="card-footer text-center">
-                                    <button type="submit" class="btn btn-sm btn-dark">UPLOAD</button>
+                                    <button type="submit" class="btn btn-sm btn-dark">UPDATE</button>
                                   </div>  
                                 </div>
                             </form>

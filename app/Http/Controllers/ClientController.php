@@ -29,6 +29,13 @@ class ClientController extends Controller{
     }
 
     public function insert(Request $request){
+        $request->validate([
+            'client_name' => 'required',
+            'client_url' => 'required',
+        ],[
+            'client_name.required' => "Please enter your client name .",
+            'client_url.required' => "Please enter your client url .",
+        ]); 
 
         $slug = 'C'.uniqid(20);
 
@@ -52,6 +59,13 @@ class ClientController extends Controller{
     }   
 
     public function update(Request $request){
+        $request->validate([
+            'client_name' => 'required',
+            'client_url' => 'required',
+        ],[
+            'client_name.required' => "Please enter your client name .",
+            'client_url.required' => "Please enter your client url .",
+        ]); 
 
         $id = $request['client_id'];
         $slug = 'S'.uniqid(20);

@@ -32,17 +32,27 @@
                                         </div>
                                         <div class="col-md-2"></div>
                                     </div>
-                                      <div class="row mb-3">
+                                      <div class="row mb-3 {{ $errors->has('country_name') ? 'is-invalid' : '' }}">
                                         <label class="col-sm-3 col-form-label col_form_label">Country Name<span class="req_star">*</span>:</label>
                                         <div class="col-sm-7">
-                                          <input type="text" name="country_id" value="{{ $country->country_id }}">
+                                          <input type="hidden" name="country_id" value="{{ $country->country_id }}">
                                           <input type="text" class="form-control form_control" id="" name="country_name" value="{{ $country->country_name }}">
+                                          @if($errors->has('country_name'))
+                                            <span class="invalid-feedback">
+                                              <strong>{{ $errors->first('country_name') }}</strong>
+                                            </span>
+                                          @endif
                                         </div>
                                       </div>
-                                      <div class="row mb-3">
+                                      <div class="row mb-3 {{ $errors->has('country_title') ? 'is-invalid' : '' }}">
                                         <label class="col-sm-3 col-form-label col_form_label">Country Title<span class="req_star">*</span>:</label>
                                         <div class="col-sm-7">
                                           <input type="text" class="form-control form_control" id="" name="country_title" value="{{ $country->country_title }}">
+                                          @if($errors->has('country_title'))
+                                            <span class="invalid-feedback">
+                                              <strong>{{ $errors->first('country_title') }}</strong>
+                                            </span>
+                                          @endif
                                         </div>
                                         </div>
                                       <div class="row mb-3">
@@ -83,7 +93,7 @@
                                           </div>
                                         </div>   
                                   <div class="card-footer text-center">
-                                    <button type="submit" class="btn btn-sm btn-dark">UPLOAD</button>
+                                    <button type="submit" class="btn btn-sm btn-dark">UPDATE</button>
                                   </div>  
                                 </div>
                             </form>

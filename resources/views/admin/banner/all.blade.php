@@ -49,7 +49,7 @@
                         <td>{{ $banner->banner_button }}</td>
                         <td>{{ $banner->banner_status }}</td>
                         <td>
-                             
+                             <img src="{{ asset('uploads/banners') }}" alt="">
                         </td>
                         <td>
                             <div class="btn-group btn_group_manage" role="group">
