@@ -67,8 +67,8 @@ body{
 
 .sidebar_part{
     background-color: #252c34;
-    height: 88vh;
-    padding-left: 0px;
+    max-height: 180vh;
+    padding-left: 10px;
     padding-right: 0px;
 }
 
@@ -116,7 +116,7 @@ body{
 }
 
 .menu ul li a{
-   color: #ccc;
+    color: #ccc;
 	font-size: 14px;
 	font-weight: 500;
 	text-decoration: none;
@@ -289,3 +289,4 @@ span.req_star{
 .invalid-feedback {
     display: block;
 }
+

@@ -48,7 +48,7 @@
                         <td>{{ $data->project_title }}</td>
                         <td>{{ $data->project_url }}</td>
                         <td>{{ $data->project_remarks }}</td>
-                        <td>{{ $data->project_category }}</td>
+                        <td>{{ $data->categoryInfo->procate_name }}</td>
                         <td>{{ $data->project_order }}</td>
                         <td>{{ $data->project_image }}</td>
                         <td>

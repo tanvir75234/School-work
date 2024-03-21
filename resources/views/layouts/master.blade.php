@@ -11,10 +11,10 @@
   <body>
     <header>
         <div class="container-fluid header_part">
-            <div class="row">
+            <div class="row g-0">
                 <div class="col-md-2"></div>
                 <div class="col-md-7"></div>
-                <div class="col-md-3 top_right_menu text-end">
+                <div class="col-md-3  text-end">
                     <div class="dropdown">
                       <button class="btn dropdown-toggle top_right_btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                           <img src="{{ asset('contents') }}/images/avatar.png" class="img-fluid">
@@ -44,6 +44,12 @@
                         <ul>
                             <li><a href="index.html"><i class="fas fa-home"></i> Dashboard</a></li>
                             <li><a href="all-user.html"><i class="fas fa-user-circle"></i> Users</a></li>
+                            <li><a href="all-user.html"><i class="fas fa-user-circle"></i> Manage</a>
+                                <ul>
+                                    <li><a href="{{route('basic')}}" class="px-5">Basic</a></li>
+                                    <li><a href="{{route('social')}}" class="px-5">Social</a></li>
+                                </ul>
+                            </li>
                             <li><a href="{{ route('project')}}"><i class="fas fa-user-circle"></i> Project</a>
                                 <ul>
                                     <li class="mx-3"><a href="{{ route('project')}}">All Projet</a></li>
@@ -59,7 +65,8 @@
                             <li><a href="{{ route('client') }}"><i class="fas fa-images"></i> Client</a></li>
                             <li><a href="{{ route('country') }}"><i class="fas fa-images"></i> Study Aboard</a>
                                 <ul>
-                                    <li><a href="{{ route('country') }}">Country</a></li>
+                                    <li><a href="{{ route('country') }}" class="px-5">Country</a></li>
+                                    <li><a href="{{ route('university') }}" class="px-5">University</a></li>
                                 </ul>
                             </li>
                             <li><a href="{{ route('testimonial') }}"><i class="fas fa-images"></i> Testimonial</a></li>

@@ -11,6 +11,10 @@ use Session;
 use Image;
 use Auth;
 
+
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
+
 class BannerController extends Controller
 {
     public function index(){
@@ -41,13 +45,13 @@ class BannerController extends Controller
             'banner_subtitle.required' => 'Please enter your banner subtitle',
         ]);
 
-        if($request->has('banner_images')){
+        // if($request->has('banner_images')){
 
-            $file = $request->file('banner_images');
-            $extension = $file->getClientOriginalExtenstion();
-            $filename =time().'.'.$extension;
-            $file->move('uploads/banners/',$filename);
-        }
+        //     $file = $request->file('banner_images');
+        //     $extension = $file->getClientOriginalExtenstion();
+        //     $filename =time().'.'.$extension;
+        //     $file->move('uploads/banners/',$filename);
+        // }
 
         $slug = 'B'.uniqid(20);
 
@@ -56,11 +60,25 @@ class BannerController extends Controller
             'banner_title' => $request['banner_title'],
             'banner_subtitle' => $request['banner_subtitle'],
             'banner_button' => $request['banner_button'],
-            'banner_images' => $request['banner_images'],
             'banner_slug' => $slug,    
             'created_at' =>Carbon::now('asia/dhaka')->toDateTimeString(),  
             'updated_at' =>Carbon::now('asia/dhaka')->toDateTimeString(),    
         ]);
+
+        // if($request->file('images')){
+        //     $manager = new ImageManager(new Driver());
+        //     $imageName = "ban_".time().'.'.$request->file('images')->getClientOriginalExtension();
+        //     //$img = $manager->read($request->file('images'));
+        //     $img=$img->resize(300,400);
+        //     $img->toJpeg(80)->save('contents/uploads'.$imageName);
+
+        //     $image->place('contents/uploads'.$img);
+
+        //     Banner::where('banner_status',1)->where('banner_id',$insert)->update([
+        //       'banner_images'=>$imageName,
+        //       'created_at'=>Carbon::now()->toDateTimeString(),
+        //     ]);
+        //   }
 
         if($insert){
             Session::flash('success',' Successfully add your banner information');
