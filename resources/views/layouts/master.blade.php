@@ -43,6 +43,7 @@
                     <div class="menu">
                         <ul>
                             <li><a href="index.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                            
                             <li><a href="all-user.html"><i class="fas fa-user-circle"></i> Users</a></li>
                             <li><a href="{{ route('project')}}"><i class="fas fa-user-circle"></i> Project</a>
                                 <ul>

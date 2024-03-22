@@ -14,12 +14,25 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectCategoryController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\UniversityController;
+use App\Http\Controllers\Website\IndexController;
+use App\Http\Controllers\Website\CoursesController;
+use App\Http\Controllers\Website\AdmissionController;
 
 
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home',[IndexController::class,'index'])->name('home');
+Route::get('/about',[IndexController::class,'about'])->name('about');
+Route::get('/contact',[IndexController::class,'contact'])->name('contact');
+Route::get('/news',[IndexController::class,'news'])->name('news');
+Route::get('/single-course',[CoursesController::class,'single_course'])->name('single_course');
+Route::get('/courses',[CoursesController::class,'courses'])->name('courses');
+Route::get('/admission',[AdmissionController::class,'admission'])->name('admission');
+
+
 
 Route::get('/dashboard',[HomeController::class,'index']);
 
