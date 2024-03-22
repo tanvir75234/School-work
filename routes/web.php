@@ -14,9 +14,13 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectCategoryController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\UniversityController;
+<<<<<<< HEAD
 use App\Http\Controllers\Website\IndexController;
 use App\Http\Controllers\Website\CoursesController;
 use App\Http\Controllers\Website\AdmissionController;
+=======
+use App\Http\Controllers\ManageController;
+>>>>>>> 709c3dc5412b4dc754300b7278cfdbd1b347b6a8
 
 
 
@@ -116,8 +120,8 @@ Route::post('/dashboard/project/softdelete',[ProjectController::class,'softdelet
 Route::post('/dashboard/project/restore',[ProjectController::class,'restore'])->name('project.restore');
 Route::post('/dashboard/project/delete',[ProjectController::class,'delete'])->name('project.restore');
 
-Route::get('dashboard/project/category', [ProjectCategoryController::class, 'index']);
-Route::get('dashboard/project/category/add', [ProjectCategoryController::class, 'add']);
+Route::get('dashboard/project/category', [ProjectCategoryController::class, 'index'])->name('project.category');
+Route::get('dashboard/project/category/add', [ProjectCategoryController::class, 'add'])->name('project.category.add');
 Route::get('dashboard/project/category/edit/{slug}', [ProjectCategoryController::class, 'edit']);
 Route::get('dashboard/project/category/view/{slug}', [ProjectCategoryController::class, 'view']);
 Route::post('dashboard/project/category/submit', [ProjectCategoryController::class, 'insert']);
@@ -145,5 +149,10 @@ Route::post('/dashboard/university/update',[UniversityController::class,'update'
 Route::post('/dashboard/university/softdelete',[UniversityController::class,'softdelete'])->name('university.softdelete');
 Route::post('/dashboard/university/restore',[UniversityController::class,'restore'])->name('university.restore');
 Route::post('/dashboard/university/delete',[UniversityController::class,'delete'])->name('university.restore');
+
+Route::get('/dashboard/manage/basic',[ManageController::class,'basic'])->name('basic');
+Route::post('/dashboard/manage/basic/update',[ManageController::class,'basic_update'])->name('basic.update');
+Route::get('/dashboard/manage/social',[ManageController::class,'social'])->name('social');
+Route::post('/dashboard/manage/social/update',[ManageController::class,'social_update'])->name('social.update');
 
 require __DIR__.'/auth.php';

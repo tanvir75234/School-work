@@ -1,20 +1,18 @@
 @extends('layouts.master')
 @section('content')
 <div class="row">
-    <div class="col-12">
-      <form method="post" action="{{url('dashboard/project/category/submit')}}" enctype="multipart/form-data">
-        @csrf
-        <div class="card">
-            <div class="card-header card_header">
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="card-header">
                 <div class="row">
-                    <div class="col-md-8">
-                        <h4 class="card-title card_title"><i class="fab fa-gg-circle"></i> Add Project Category Information</h4>
-                    </div>
-                    <div class="col-md-4 text-right">
-                        <a href="{{url('dashboard/project/category')}}" class="btn btn-dark btn-md waves-effect btn-label waves-light card_btn"><i class="fas fa-th label-icon"></i>All Category</a>
-                    </div>
+                    <div class="col-md-8 card_title_part">
+                        <i class="fab fa-gg-circle"></i> Project Category Information
+                    </div>  
+                    <div class="col-md-4 card_button_part">
+                        <a href="{{ route('project.category') }}" class="btn btn-sm btn-dark"><i class="fas fa-plus-circle"></i>All Category</a>
+                    </div>  
                 </div>
-            </div>
+                </div>
             <div class="card-body">
               <div class="row">
                   <div class="col-md-3"></div>
