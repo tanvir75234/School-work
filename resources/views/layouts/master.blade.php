@@ -42,10 +42,10 @@
                     </div>
                     <div class="menu">
                         <ul>
-                            <li><a href="index.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                            <li><a href="{{ route('dashboard') }}"><i class="fas fa-home"></i> Dashboard</a></li>
                             
                             <li><a href="all-user.html"><i class="fas fa-user-circle"></i> Users</a></li>
-                            <li><a href="all-user.html"><i class="fas fa-user-circle"></i> Manage</a>
+                            <li><a href="#"><i class="fas fa-user-circle"></i> Manage</a>
                                 <ul>
                                     <li><a href="{{route('basic')}}" class="px-5">Basic</a></li>
                                     <li><a href="{{route('social')}}" class="px-5">Social</a></li>
@@ -53,9 +53,9 @@
                             </li>
                             <li><a href="{{ route('project')}}"><i class="fas fa-user-circle"></i> Project</a>
                                 <ul>
-                                    <li class="mx-3"><a href="{{ route('project')}}">All Projet</a></li>
-                                    <li class="mx-3"><a href="{{ route('project.add') }}">Add Projet</a></li>
-                                    <li class="mx-3"><a href="{{ url('dashboard/project/category') }}">Projet Category</a></li>
+                                    <li><a class="px-5" href="{{ route('project')}}">All Projet</a></li>
+                                    <li><a class="px-5" href="{{ route('project.add') }}">Add Projet</a></li>
+                                    <li><a class="px-5" href="{{ url('dashboard/project/category') }}">Projet Category</a></li>
                                     
                                 </ul>
                             </li>

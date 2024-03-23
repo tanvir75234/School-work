@@ -1,16 +1,22 @@
 @extends('layouts.website')
 @section('website')
-        
-    <div class="hero-slide owl-carousel site-blocks-cover">
-    <div class="intro-section" style="background-image: url('{{ asset('website') }}/images/hero_1.jpg');">
-        <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-12 mx-auto text-center" data-aos="fade-up">
-            <h1>Academics University</h1>
+
+@php
+    $banner = App\Models\Banner::where('banner_status',1)->orderBy('banner_id','DESC')->get();
+@endphp
+
+<div class="hero-slide owl-carousel site-blocks-cover">
+    @foreach($banner as $banner)
+        <div class="intro-section" style="background-image: url({{ asset('contents/uploads/banner/'.$banner->banner_images) }})">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12 mx-auto text-center" data-aos="fade-up">
+                    <h1>Academics University</h1>
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
-    </div>
+    @endforeach
 
     <div class="intro-section" style="background-image: url('{{ asset('website') }}/images/hero_1.jpg');">
         <div class="container">

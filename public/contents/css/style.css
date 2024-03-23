@@ -128,12 +128,24 @@ body{
     position: relative;
 }
 
+
+
 .menu ul li:hover a{
     background-color: #4D6299;
 }
 
 .menu ul li a i{
     margin-right: 5px;   
+}
+
+.menu ul li ul{
+    display: none;
+    transition: all linear.3s;
+}
+
+.menu ul li:hover ul{
+    display: block;
+    background-color: #252c34;
 }
 
 .content{

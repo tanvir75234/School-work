@@ -5,20 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 use App\Models\Banner;
 use Carbon\Carbon;
 use Session;
-use Image;
+// use Image;
 use Auth;
 
-
-use Intervention\Image\ImageManager;
-use Intervention\Image\Drivers\Gd\Driver;
 
 class BannerController extends Controller
 {
     public function index(){
-        $banner = Banner::where('banner_status',1)->orderBy('banner_id','DESC')->get();
+        $banner = Banner::where('banner_status',1)->orderBy('banner_id','DESC')->get();      
         return view('admin.banner.all',compact('banner'));
     }
 
@@ -45,19 +44,11 @@ class BannerController extends Controller
             'banner_subtitle.required' => 'Please enter your banner subtitle',
         ]);
 
-        // if($request->has('banner_images')){
+        $slug = 'B'.uniqid(20); 
 
-        //     $file = $request->file('banner_images');
-        //     $extension = $file->getClientOriginalExtenstion();
-        //     $filename =time().'.'.$extension;
-        //     $file->move('uploads/banners/',$filename);
-        // }
-
-        $slug = 'B'.uniqid(20);
-
-
-        $insert = Banner::insert([
+        $banner_id = Banner::insertGetId([
             'banner_title' => $request['banner_title'],
+            'banner_images' => $request['images'],
             'banner_subtitle' => $request['banner_subtitle'],
             'banner_button' => $request['banner_button'],
             'banner_slug' => $slug,    
@@ -65,22 +56,24 @@ class BannerController extends Controller
             'updated_at' =>Carbon::now('asia/dhaka')->toDateTimeString(),    
         ]);
 
-        // if($request->file('images')){
-        //     $manager = new ImageManager(new Driver());
-        //     $imageName = "ban_".time().'.'.$request->file('images')->getClientOriginalExtension();
-        //     //$img = $manager->read($request->file('images'));
-        //     $img=$img->resize(300,400);
-        //     $img->toJpeg(80)->save('contents/uploads'.$imageName);
+     
+        if($request->hasfile('images')){
+            $manager = new ImageManager(new Driver());
+            $logo = $request->file('images');
+            $logoName = 'images'.time().'.'.$logo->getClientOriginalExtension(); 
+            $logo = $manager->read($logo);
+            $logo = $logo->resize(300,300);
+            $logo->save('contents/uploads/banner/'.$logoName);
+            
+            Banner::where('banner_id', $banner_id)->update([
+                      'banner_images' => $logoName,
+        
+                    ]);
 
-        //     $image->place('contents/uploads'.$img);
+        }
+   
 
-        //     Banner::where('banner_status',1)->where('banner_id',$insert)->update([
-        //       'banner_images'=>$imageName,
-        //       'created_at'=>Carbon::now()->toDateTimeString(),
-        //     ]);
-        //   }
-
-        if($insert){
+        if($banner_id){
             Session::flash('success',' Successfully add your banner information');
             return redirect('/dashboard/banner');
         }else{

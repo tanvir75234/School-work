@@ -14,18 +14,16 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectCategoryController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\UniversityController;
-<<<<<<< HEAD
 use App\Http\Controllers\Website\IndexController;
 use App\Http\Controllers\Website\CoursesController;
 use App\Http\Controllers\Website\AdmissionController;
-=======
 use App\Http\Controllers\ManageController;
->>>>>>> 709c3dc5412b4dc754300b7278cfdbd1b347b6a8
+
 
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('website.home.index');
 });
 
 Route::get('/home',[IndexController::class,'index'])->name('home');
@@ -38,7 +36,7 @@ Route::get('/admission',[AdmissionController::class,'admission'])->name('admissi
 
 
 
-Route::get('/dashboard',[HomeController::class,'index']);
+Route::get('/dashboard',[HomeController::class,'index'])->name('dashboard');
 
 Route::get('/dashboard/banner',[BannerController::class,'index'])->name('banner');
 Route::get('/dashboard/banner/add',[BannerController::class,'add'])->name('banner.add');
