@@ -1,38 +1,47 @@
 @extends('layouts.website')
 @section('website')
-
 @php
-    $banner = App\Models\Banner::where('banner_status',1)->orderBy('banner_id','DESC')->get();
+    $allBanner = App\Models\Banner::where('banner_status',1)->orderBy('banner_id','DESC')->get();
 @endphp
 
+
 <div class="hero-slide owl-carousel site-blocks-cover">
-    @foreach($banner as $banner)
-        <div class="intro-section" style="background-image: url({{ asset('contents/uploads/banner/'.$banner->banner_images) }})">
+    @foreach($allBanner as $banner)
+    
+    <div class="banner_img" >          
+           
+        <div class="intro-section" style="background:url('{{ asset('contents/uploads/banner/'.$banner->banner_images)}}')">
+        
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-12 mx-auto text-center" data-aos="fade-up">
-                    <h1>Academics University</h1>
+                        <h1>Academics University</h1>
                     </div>
                 </div>
             </div>
+            </div>
         </div>
-    @endforeach
+    
+    
 
-    <div class="intro-section" style="background-image: url('{{ asset('website') }}/images/hero_1.jpg');">
+
+       
+    <div class="intro-section" style="background:url('{{ asset('contents/uploads/banner/'.$banner->banner_images)}}')">
         <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-12 mx-auto text-center" data-aos="fade-up">
-            <h1>You Can Learn Anything</h1>
+                <h1>You Can Learn Anything</h1>
             </div>
         </div>
         </div>
     </div>
 
+    @endforeach
     </div>
 
 
     <div></div>
-
+    
     <div class="site-section">
     <div class="container">
         <div class="row mb-5 justify-content-center text-center">
